@@ -1,4 +1,4 @@
-from projection import display_projections, load_projections, save_projections
+from modules.projection import display_projections, load_projections, save_projections
 
 
 def add_reservations():
@@ -123,7 +123,6 @@ def delete_reservations():
     if confirm == "y":
         movie["reserved"].remove(reservation)
         movie["available_seats"] += reservation["seats"]
-        print("Saving this to file:", reservation_list)
         save_projections(reservation_list)
         print(f"Reservation deleted")
     else:
