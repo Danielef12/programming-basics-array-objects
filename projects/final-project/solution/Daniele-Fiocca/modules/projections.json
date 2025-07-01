@@ -3,12 +3,8 @@
     "title": "Iron Man",
     "time": "20.45",
     "theater": "Moderno",
-    "available_seats": 42,
+    "available_seats": 47,
     "reserved": [
-      {
-        "name": "daniele",
-        "seats": 5
-      },
       {
         "name": "daniele",
         "seats": 3
