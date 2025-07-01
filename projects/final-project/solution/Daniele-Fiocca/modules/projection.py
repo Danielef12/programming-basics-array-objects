@@ -2,7 +2,7 @@ import json
 
 
 def load_projections():
-    projections = json.load(open("projections.json"))
+    projections = json.load(open("modules/projections.json"))
     return projections
 
 
@@ -15,5 +15,5 @@ def display_projections():
 
 
 def save_projections(projections):
-    with open("projections.json", "w") as f:
+    with open("modules/projections.json", "w") as f:
         json.dump(projections, f, indent=2)

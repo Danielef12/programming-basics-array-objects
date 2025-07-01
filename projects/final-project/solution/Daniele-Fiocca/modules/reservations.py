@@ -1,4 +1,4 @@
-from projection import display_projections, load_projections, save_projections
+from modules.projection import display_projections, load_projections, save_projections
 
 
 def add_reservations():
@@ -10,11 +10,15 @@ def add_reservations():
         print("Name must not be empty.")
 
     display_projections()
-
-    film_selection = int(input("Select the number of the movie to reserve seats: ")) - 1
-    if not (0 <= film_selection < len(reservation_list)):
-        print("Invalid selection")
-        return
+    while True:
+        try:
+            film_selection = int(input("Select the number of the movie to reserve seats: ")) - 1
+            if 0 <= film_selection < len(reservation_list):
+                break
+            else:
+                print(f"Invalid selection. Please enter a number between 1 and {len(reservation_list)}")
+        except ValueError:
+            print("Invalid input please try again and enter a valid number.")
 
     selected_movie = reservation_list[film_selection]
 
@@ -24,10 +28,10 @@ def add_reservations():
 
             if seats <= 0:
                 print("You must select at least one seat")
-                return
-            if seats > selected_movie["available_seats"]:
+
+            elif seats > selected_movie["available_seats"]:
                 print("Not enough available seats")
-                return
+
             else:
                 break
         except ValueError:
@@ -123,7 +127,6 @@ def delete_reservations():
     if confirm == "y":
         movie["reserved"].remove(reservation)
         movie["available_seats"] += reservation["seats"]
-        print("Saving this to file:", reservation_list)
         save_projections(reservation_list)
         print(f"Reservation deleted")
     else:

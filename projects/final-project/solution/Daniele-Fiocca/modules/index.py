@@ -1,5 +1,5 @@
-from projection import display_projections
-from reservations import add_reservations, delete_reservations, modify_reservations
+from modules.projection import display_projections
+from modules.reservations import add_reservations, delete_reservations, modify_reservations
 
 
 def display_menu():
